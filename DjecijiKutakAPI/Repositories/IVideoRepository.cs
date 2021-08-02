@@ -12,5 +12,7 @@ namespace DjecijiKutakAPI.Repositories
     {
         Task<List<VideoViewModel>> GetVideos(CancellationToken cancellationToken = default);
         Task<VideoViewModel> AddVideo(VideoViewModel video, CancellationToken cancellationToken = default);
+        Task<VideoViewModel> GetVideoById(int id, CancellationToken cancellationToken = default);
+        Task<List<VideoViewModel>> Search(string searchTerm, CancellationToken cancellationToken = default);
     }
 }

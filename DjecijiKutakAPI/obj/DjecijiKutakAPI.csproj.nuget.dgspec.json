@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DjecijiKutakAPI\\DjecijiKutakAPI\\DjecijiKutakAPI\\DjecijiKutakAPI.csproj": {}
+    "D:\\Djeciji_Kutak\\API\\DjecijiKutakAPI\\DjecijiKutakAPI.csproj": {}
   },
   "projects": {
-    "D:\\DjecijiKutakAPI\\DjecijiKutakAPI\\DjecijiKutakAPI\\DjecijiKutakAPI.csproj": {
+    "D:\\Djeciji_Kutak\\API\\DjecijiKutakAPI\\DjecijiKutakAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DjecijiKutakAPI\\DjecijiKutakAPI\\DjecijiKutakAPI\\DjecijiKutakAPI.csproj",
+        "projectUniqueName": "D:\\Djeciji_Kutak\\API\\DjecijiKutakAPI\\DjecijiKutakAPI.csproj",
         "projectName": "DjecijiKutakAPI",
-        "projectPath": "D:\\DjecijiKutakAPI\\DjecijiKutakAPI\\DjecijiKutakAPI\\DjecijiKutakAPI.csproj",
+        "projectPath": "D:\\Djeciji_Kutak\\API\\DjecijiKutakAPI\\DjecijiKutakAPI.csproj",
         "packagesPath": "C:\\Users\\kenom\\.nuget\\packages\\",
-        "outputPath": "D:\\DjecijiKutakAPI\\DjecijiKutakAPI\\DjecijiKutakAPI\\obj\\",
+        "outputPath": "D:\\Djeciji_Kutak\\API\\DjecijiKutakAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

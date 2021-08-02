@@ -6,6 +6,7 @@ namespace DjecijiKutakAPI.Entities
     {
         public string Title { get; set; }
         public string YoutubeID { get; set; }
+        public string IframeUrl { get; set; }
         public bool IsFree { get; set; }
         public IList<Favorite> Favorites { get; set; }
     }

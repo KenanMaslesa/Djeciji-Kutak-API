@@ -19,11 +19,18 @@ namespace DjecijiKutakAPI.Controllers
         {
             _videoRepository = videoRepository;
         }
-
        [HttpGet]
-       public async Task<List<VideoViewModel>> GetVideos()
+       public async Task<IActionResult> GetVideos()
         {
-            return await _videoRepository.GetVideos();
+            var videos = await _videoRepository.GetVideos();
+            return Ok(videos);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var video = await _videoRepository.GetVideoById(id);
+            return Ok(video);
         }
 
         [HttpPost]
@@ -32,11 +39,13 @@ namespace DjecijiKutakAPI.Controllers
             await _videoRepository.AddVideo(video);
             return Ok();
         }
+       
 
-        [HttpGet("{id}")]
-        public string GetVideo(int id)
+        [HttpGet("{searchTerm}")]
+        public async Task<IActionResult> Search(string searchTerm)
         {
-            return "product";
+            var videos = await _videoRepository.Search(searchTerm);
+            return Ok(videos);
         }
     }
 }

@@ -23,16 +23,27 @@ namespace DjecijiKutakAPI.Repositories
             {
                 YoutubeID = video.YoutubeID,
                 Title = video.Title,
-                IsFree = video.IsFree
+                IsFree = video.IsFree,
+                IframeUrl = video.IframeUrl
             };
             await _dbContext.Videos.AddAsync(newVideo, cancellationToken);
             await _dbContext.SaveChangesAsync(cancellationToken);
             return new VideoViewModel(newVideo);
         }
 
+        public async Task<VideoViewModel> GetVideoById(int id, CancellationToken cancellationToken = default)
+        {
+           return await _dbContext.Videos.Where(x => x.Id == id).Select(x => new VideoViewModel(x)).FirstOrDefaultAsync();
+        }
+
         public async Task<List<VideoViewModel>> GetVideos(CancellationToken cancellationToken = default)
         {
-            return await _dbContext.Videos.Select(x => new VideoViewModel(x)).ToListAsync(cancellationToken);
+            return await _dbContext.Videos.OrderByDescending(x => x.IsFree).Select(x => new VideoViewModel(x)).ToListAsync(cancellationToken);
+        }
+
+        public async Task<List<VideoViewModel>> Search(string searchTerm, CancellationToken cancellationToken = default)
+        {
+            return await _dbContext.Videos.Where(x => x.Title.ToLower().Contains(searchTerm.ToLower())).Select(x => new VideoViewModel(x)).ToListAsync(cancellationToken);
         }
     }
 }

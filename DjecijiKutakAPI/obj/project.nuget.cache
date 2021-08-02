@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VVnC6POsuAJUUIDpiD3bj3lW+8Jcg33PgeFqzv8zideyR0FKmChX9m7ggzbJwJb0APquyrk7pMQqHeGVMXglRg==",
+  "dgSpecHash": "0KMZ8R0DSOSYQdXG8G9jqihXusilDIrvg0KkWIsLQoK/8xFA6sbmPSTGQ1XbL6rOINLDFr4kNGsgPphQnYdmkQ==",
   "success": true,
-  "projectFilePath": "D:\\DjecijiKutakAPI\\DjecijiKutakAPI\\DjecijiKutakAPI\\DjecijiKutakAPI.csproj",
+  "projectFilePath": "D:\\Djeciji_Kutak\\API\\DjecijiKutakAPI\\DjecijiKutakAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kenom\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\kenom\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.2.0\\microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",
