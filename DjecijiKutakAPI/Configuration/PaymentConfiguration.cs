@@ -14,6 +14,9 @@ namespace DjecijiKutakAPI.Configuration
             base.Configure(builder);
             builder.Property(p => p.SubscriptionID).IsRequired(true);
 
+            builder.HasOne(x => x.User)
+                .WithOne(x => x.Payment)
+                .HasForeignKey<Payment>(x => x.UserID);
         }
     }
 }

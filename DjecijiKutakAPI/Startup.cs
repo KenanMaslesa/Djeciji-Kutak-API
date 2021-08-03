@@ -1,8 +1,10 @@
 using DjecijiKutakAPI.Data;
+using DjecijiKutakAPI.Entities;
 using DjecijiKutakAPI.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -31,6 +33,10 @@ namespace DjecijiKutakAPI
             services.AddControllers();
             var connectionString = _config.GetConnectionString("DjecijiKutak");
             services.AddDbContext<StoreContext>(builder => builder.UseSqlServer(connectionString));
+
+            services.AddIdentity<User, AppRole>()
+               .AddEntityFrameworkStores<StoreContext>()
+               .AddDefaultTokenProviders();
 
             services.AddScoped<IVideoRepository, VideoRepository>();
         }

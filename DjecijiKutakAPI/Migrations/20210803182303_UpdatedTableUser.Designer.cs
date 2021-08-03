@@ -4,14 +4,16 @@ using DjecijiKutakAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DjecijiKutakAPI.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20210803182303_UpdatedTableUser")]
+    partial class UpdatedTableUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -208,55 +210,6 @@ namespace DjecijiKutakAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Videos");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NormalizedName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("IdentityRole");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "d47b1ae8-3dca-4122-99f4-dfc5d51f8998",
-                            ConcurrencyStamp = "3c639c92-8a87-47df-8f91-41fc5f8b4691",
-                            Name = "User",
-                            NormalizedName = "USER"
-                        },
-                        new
-                        {
-                            Id = "4510ed21-3ec5-4951-9635-f195d83a72d2",
-                            ConcurrencyStamp = "b7f12995-dacd-4442-b426-06f3104da1d9",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
-                        },
-                        new
-                        {
-                            Id = "707f7c12-1f63-4d1b-a4d0-8538318ed9fb",
-                            ConcurrencyStamp = "4cc74e4b-c5d6-4220-8937-e5ba7e6a40a0",
-                            Name = "User",
-                            NormalizedName = "USER"
-                        },
-                        new
-                        {
-                            Id = "6f0e42ef-2469-4e5c-b09f-9926c683a845",
-                            ConcurrencyStamp = "9110abfd-bbe3-40de-81a3-d9c5e59597bd",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

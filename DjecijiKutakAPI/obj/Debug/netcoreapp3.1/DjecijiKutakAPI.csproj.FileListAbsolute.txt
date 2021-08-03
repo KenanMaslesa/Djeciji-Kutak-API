@@ -170,3 +170,10 @@ D:\Djeciji_Kutak\API\DjecijiKutakAPI\obj\Debug\netcoreapp3.1\DjecijiKutakAPI.csp
 D:\Djeciji_Kutak\API\DjecijiKutakAPI\obj\Debug\netcoreapp3.1\DjecijiKutakAPI.dll
 D:\Djeciji_Kutak\API\DjecijiKutakAPI\obj\Debug\netcoreapp3.1\DjecijiKutakAPI.pdb
 D:\Djeciji_Kutak\API\DjecijiKutakAPI\obj\Debug\netcoreapp3.1\DjecijiKutakAPI.genruntimeconfig.cache
+D:\Djeciji_Kutak\API\DjecijiKutakAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Djeciji_Kutak\API\DjecijiKutakAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Djeciji_Kutak\API\DjecijiKutakAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Djeciji_Kutak\API\DjecijiKutakAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+D:\Djeciji_Kutak\API\DjecijiKutakAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+D:\Djeciji_Kutak\API\DjecijiKutakAPI\bin\Debug\netcoreapp3.1\xunit.abstractions.dll
+D:\Djeciji_Kutak\API\DjecijiKutakAPI\bin\Debug\netcoreapp3.1\xunit.core.dll

@@ -4,14 +4,16 @@ using DjecijiKutakAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DjecijiKutakAPI.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20210803182900_InitialRole")]
+    partial class InitialRole
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -231,29 +233,15 @@ namespace DjecijiKutakAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d47b1ae8-3dca-4122-99f4-dfc5d51f8998",
-                            ConcurrencyStamp = "3c639c92-8a87-47df-8f91-41fc5f8b4691",
+                            Id = "9880b6a1-954a-4289-bc0c-994c7414764d",
+                            ConcurrencyStamp = "e4b6d54a-8025-4ae2-ba0b-40e81e5ee4b0",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "4510ed21-3ec5-4951-9635-f195d83a72d2",
-                            ConcurrencyStamp = "b7f12995-dacd-4442-b426-06f3104da1d9",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
-                        },
-                        new
-                        {
-                            Id = "707f7c12-1f63-4d1b-a4d0-8538318ed9fb",
-                            ConcurrencyStamp = "4cc74e4b-c5d6-4220-8937-e5ba7e6a40a0",
-                            Name = "User",
-                            NormalizedName = "USER"
-                        },
-                        new
-                        {
-                            Id = "6f0e42ef-2469-4e5c-b09f-9926c683a845",
-                            ConcurrencyStamp = "9110abfd-bbe3-40de-81a3-d9c5e59597bd",
+                            Id = "6e828515-130c-4830-bbe2-fc9172002586",
+                            ConcurrencyStamp = "8a004381-7869-4e71-9e5a-346f7c4fa364",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
