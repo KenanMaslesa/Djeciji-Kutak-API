@@ -12,7 +12,6 @@ namespace DjecijiKutakAPI.Data
         }
 
         public DbSet<Video> Videos { get; set; }
-        //public DbSet<User> Users { get; set; }
         public DbSet<Payment> Payments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

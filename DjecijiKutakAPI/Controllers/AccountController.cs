@@ -1,58 +1,84 @@
-﻿using DjecijiKutakAPI.Entities;
+﻿using API.Controllers;
+using AutoMapper;
+using DjecijiKutakAPI.DTOs;
+using DjecijiKutakAPI.Entities;
 using DjecijiKutakAPI.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
 
 namespace DjecijiKutakAPI.Controllers
 {
-    [Route("api/accounts")]
-    [ApiController]
-    public class AccountController : ControllerBase
+    public class AccountController : BaseApiController
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
 
-        public AccountController(UserManager<User> userManager,
-                                 SignInManager<User> signInManager)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
         }
 
-        [HttpPost("Registration")]
-        public async Task<IActionResult> RegisterUser([FromBody] RegisterViewModel userForRegistration)
+        [HttpPost("register")]
+        public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
-            if (userForRegistration != null && ModelState.IsValid)
+            if (await UserExists(registerDto.UserName)) return BadRequest("Username is taken");
+
+            var user = new User
             {
-                var user = new User
-                {
-                    FirstName = userForRegistration.FirstName,
-                    LastName = userForRegistration.LastName,
-                    Password = userForRegistration.Password,
-                    UserName = userForRegistration.UserName,
-                    Email = userForRegistration.Email,
-                    RegistrationDate = DateTime.Now
-                };
-                var result = await _userManager.CreateAsync(user, userForRegistration.Password);
+                FirstName = registerDto.FirstName,
+                LastName = registerDto.LastName,
+                Password = registerDto.Password,
+                UserName = registerDto.UserName,
+                Email = registerDto.Email,
+                RegistrationDate = DateTime.Now
+            };
 
-                if (result.Succeeded)
-                {
-                    user.LastLoginDate = DateTime.Now;
-                    await _userManager.AddToRoleAsync(user, "User");
-                    return StatusCode(201);
-                }
-                else
-                {
-                    foreach (var x in result.Errors)
-                    {
-                        ModelState.AddModelError("", x.Description);
-                    }
-                }
+            var result = await _userManager.CreateAsync(user, registerDto.Password);
+
+            if (!result.Succeeded) return BadRequest(result.Errors);
+
+            var roleResult = await _userManager.AddToRoleAsync(user, "User");
+
+            if (!roleResult.Succeeded) return BadRequest(result.Errors);
+
+            return new UserDto
+            {
+                Username = user.UserName,
+            };
+
         }
-            return BadRequest();
 
+
+        [HttpPost("login")]
+        public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
+        {
+            var user = await _userManager.Users
+                .SingleOrDefaultAsync(x => x.UserName == loginDto.Username.ToLower());
+
+            if (user == null) return Unauthorized("Invalid username");
+
+            var result = await _signInManager
+                .CheckPasswordSignInAsync(user, loginDto.Password, false);
+
+            if (!result.Succeeded) return Unauthorized();
+
+            user.LastLoginDate = DateTime.Now;
+            await _userManager.UpdateAsync(user);
+
+            return new UserDto
+            {
+                Username = user.UserName,
+            };
+        }
+
+
+        private async Task<bool> UserExists(string username)
+        {
+            return await _userManager.Users.AnyAsync(x => x.UserName == username.ToLower());
         }
     }
 }

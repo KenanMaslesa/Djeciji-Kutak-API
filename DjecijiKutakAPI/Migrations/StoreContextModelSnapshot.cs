@@ -231,29 +231,29 @@ namespace DjecijiKutakAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d47b1ae8-3dca-4122-99f4-dfc5d51f8998",
-                            ConcurrencyStamp = "3c639c92-8a87-47df-8f91-41fc5f8b4691",
+                            Id = "0ef3dad1-bdd3-4685-8a20-4aedb4d7ad15",
+                            ConcurrencyStamp = "7fd42103-c6bc-4355-ae2a-1c2a651fa596",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "4510ed21-3ec5-4951-9635-f195d83a72d2",
-                            ConcurrencyStamp = "b7f12995-dacd-4442-b426-06f3104da1d9",
+                            Id = "e0c8d850-0f40-4357-a93d-3bd77a162611",
+                            ConcurrencyStamp = "aef6fffc-81e0-49b9-a806-6282d5f6625f",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "707f7c12-1f63-4d1b-a4d0-8538318ed9fb",
-                            ConcurrencyStamp = "4cc74e4b-c5d6-4220-8937-e5ba7e6a40a0",
+                            Id = "fb78f6ad-69a3-460b-a5e1-fce00fd99b80",
+                            ConcurrencyStamp = "e262314b-59c4-4e41-9467-0b58e057e220",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "6f0e42ef-2469-4e5c-b09f-9926c683a845",
-                            ConcurrencyStamp = "9110abfd-bbe3-40de-81a3-d9c5e59597bd",
+                            Id = "b0e6d1c3-79ac-47d9-af17-4c841fa62c40",
+                            ConcurrencyStamp = "27f7f769-f9a0-4b71-b63c-3b5ba2a47f84",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -334,11 +334,17 @@ namespace DjecijiKutakAPI.Migrations
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUserRole<int>");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
@@ -358,6 +364,23 @@ namespace DjecijiKutakAPI.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("API.Entities.AppUserRole", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUserRole<int>");
+
+                    b.Property<int?>("RoleId1")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UserId1")
+                        .HasColumnType("int");
+
+                    b.HasIndex("RoleId1");
+
+                    b.HasIndex("UserId1");
+
+                    b.HasDiscriminator().HasValue("AppUserRole");
                 });
 
             modelBuilder.Entity("DjecijiKutakAPI.Entities.Favorite", b =>
@@ -439,6 +462,26 @@ namespace DjecijiKutakAPI.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("API.Entities.AppUserRole", b =>
+                {
+                    b.HasOne("DjecijiKutakAPI.Entities.AppRole", "Role")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("RoleId1");
+
+                    b.HasOne("DjecijiKutakAPI.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId1");
+
+                    b.Navigation("Role");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DjecijiKutakAPI.Entities.AppRole", b =>
+                {
+                    b.Navigation("UserRoles");
                 });
 
             modelBuilder.Entity("DjecijiKutakAPI.Entities.User", b =>
