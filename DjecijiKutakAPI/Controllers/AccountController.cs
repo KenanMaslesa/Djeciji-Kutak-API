@@ -25,16 +25,16 @@ namespace DjecijiKutakAPI.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
-            if (await UserExists(registerDto.UserName)) return BadRequest("Username is taken");
+            if (await UserExists(registerDto.Email)) return BadRequest("Email se već koristi");
+
 
             var user = new User
             {
                 FirstName = registerDto.FirstName,
                 LastName = registerDto.LastName,
-                Password = registerDto.Password,
-                UserName = registerDto.UserName,
                 Email = registerDto.Email,
-                RegistrationDate = DateTime.Now
+                RegistrationDate = DateTime.Now,
+                UserName = registerDto.Email
             };
 
             var result = await _userManager.CreateAsync(user, registerDto.Password);
@@ -47,7 +47,9 @@ namespace DjecijiKutakAPI.Controllers
 
             return new UserDto
             {
-                Username = user.UserName,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email
             };
 
         }
@@ -57,28 +59,30 @@ namespace DjecijiKutakAPI.Controllers
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
             var user = await _userManager.Users
-                .SingleOrDefaultAsync(x => x.UserName == loginDto.Username.ToLower());
+                .SingleOrDefaultAsync(x => x.Email == loginDto.Email.ToLower());
 
-            if (user == null) return Unauthorized("Invalid username");
+            if (user == null) return Unauthorized("Pogrešan email");
 
             var result = await _signInManager
                 .CheckPasswordSignInAsync(user, loginDto.Password, false);
 
-            if (!result.Succeeded) return Unauthorized();
+            if (!result.Succeeded) return Unauthorized("Netačna lozinka");
 
             user.LastLoginDate = DateTime.Now;
             await _userManager.UpdateAsync(user);
 
             return new UserDto
             {
-                Username = user.UserName,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email
             };
         }
 
 
-        private async Task<bool> UserExists(string username)
+        private async Task<bool> UserExists(string email)
         {
-            return await _userManager.Users.AnyAsync(x => x.UserName == username.ToLower());
+            return await _userManager.Users.AnyAsync(x => x.Email == email.ToLower());
         }
     }
 }

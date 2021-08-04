@@ -4,15 +4,23 @@ namespace DjecijiKutakAPI.DTOs
 {
     public class RegisterDto
     {
+        [Required(ErrorMessage = "Ime je obavezno polje")]
         public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string UserName { get; set; }
 
-        [Required(ErrorMessage = "Email is required.")]
+        [Required(ErrorMessage = "Prezime je obavezno polje")]
+        public string LastName { get; set; }
+
+
+        [Required(ErrorMessage = "Email je obavezno polje")]
+        [EmailAddress(ErrorMessage = "Unesite validnu email adresu")]
         public string Email { get; set; }
-        [Required(ErrorMessage = "Password is required")]
+
+
+        [Required(ErrorMessage = "Lozinka je obavezno polje")]
         public string Password { get; set; }
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+
+        [Required(ErrorMessage = "Molimo Vas potvrdite loziku")]
+        [Compare("Password", ErrorMessage = "Lozinke se ne podudaraju")]
         public string ConfirmPassword { get; set; }
 
     }
