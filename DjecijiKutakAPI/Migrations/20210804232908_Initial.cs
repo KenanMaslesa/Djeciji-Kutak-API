@@ -30,7 +30,6 @@ namespace DjecijiKutakAPI.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RegistrationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastLoginDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PaymentID = table.Column<int>(type: "int", nullable: false),
@@ -213,6 +212,10 @@ namespace DjecijiKutakAPI.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SubscriptionID = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BillingToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FacilitatorAccessToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OrderID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PaymentID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserID = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -259,10 +262,10 @@ namespace DjecijiKutakAPI.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "0ef3dad1-bdd3-4685-8a20-4aedb4d7ad15", "7fd42103-c6bc-4355-ae2a-1c2a651fa596", "User", "USER" },
-                    { "e0c8d850-0f40-4357-a93d-3bd77a162611", "aef6fffc-81e0-49b9-a806-6282d5f6625f", "Administrator", "ADMINISTRATOR" },
-                    { "fb78f6ad-69a3-460b-a5e1-fce00fd99b80", "e262314b-59c4-4e41-9467-0b58e057e220", "User", "USER" },
-                    { "b0e6d1c3-79ac-47d9-af17-4c841fa62c40", "27f7f769-f9a0-4b71-b63c-3b5ba2a47f84", "Administrator", "ADMINISTRATOR" }
+                    { "bf17df89-f9dd-459a-a6f0-2d724729ea35", "bc43c0bb-3d65-4367-b785-3e7212fa6e8c", "User", "USER" },
+                    { "3295833c-4dc8-4f7f-b617-d35c88507f5d", "c8b7ff88-3e7a-4c65-b366-7f7a79b7e06f", "Administrator", "ADMINISTRATOR" },
+                    { "12552398-6808-4cad-8b21-dc9a7ada60ec", "a2b86a7b-0cbd-431d-a22b-1fee588862f9", "User", "USER" },
+                    { "a3c8588b-080a-4329-bc08-ceb7d271a773", "d3a28723-9c14-4392-8299-652bac225c63", "Administrator", "ADMINISTRATOR" }
                 });
 
             migrationBuilder.CreateIndex(

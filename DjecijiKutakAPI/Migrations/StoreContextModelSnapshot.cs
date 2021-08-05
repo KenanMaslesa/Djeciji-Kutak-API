@@ -80,8 +80,20 @@ namespace DjecijiKutakAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("BillingToken")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("FacilitatorAccessToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrderID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PaymentID")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SubscriptionID")
                         .IsRequired()
@@ -228,29 +240,29 @@ namespace DjecijiKutakAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1594aeab-29a9-48d3-b3ab-f6dad54cd6d1",
-                            ConcurrencyStamp = "58fdd353-e4f8-4a7c-a982-74a424349286",
+                            Id = "bf17df89-f9dd-459a-a6f0-2d724729ea35",
+                            ConcurrencyStamp = "bc43c0bb-3d65-4367-b785-3e7212fa6e8c",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "9e489ef1-c066-406f-9d82-8ed449bc8dd5",
-                            ConcurrencyStamp = "8740556c-80fd-4de1-870d-05008e11cf1d",
+                            Id = "3295833c-4dc8-4f7f-b617-d35c88507f5d",
+                            ConcurrencyStamp = "c8b7ff88-3e7a-4c65-b366-7f7a79b7e06f",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "9bd12834-ab68-466e-bf6d-ead97fe2fd3e",
-                            ConcurrencyStamp = "8b4be938-5bfd-4398-b10f-b86087cd81bc",
+                            Id = "12552398-6808-4cad-8b21-dc9a7ada60ec",
+                            ConcurrencyStamp = "a2b86a7b-0cbd-431d-a22b-1fee588862f9",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "fab067fc-dcd3-4a2c-9792-0fa0d3c2fd66",
-                            ConcurrencyStamp = "54febad6-5efa-477a-a82e-ce276c54267d",
+                            Id = "a3c8588b-080a-4329-bc08-ceb7d271a773",
+                            ConcurrencyStamp = "d3a28723-9c14-4392-8299-652bac225c63",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });

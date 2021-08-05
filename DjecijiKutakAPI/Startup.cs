@@ -50,6 +50,9 @@ namespace DjecijiKutakAPI
                .AddEntityFrameworkStores<StoreContext>();
 
             services.AddScoped<IVideoRepository, VideoRepository>();
+            services.AddScoped<IPaymentRepository, PaymentRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            
             services.TryAddSingleton<ISystemClock, SystemClock>();
         }
 

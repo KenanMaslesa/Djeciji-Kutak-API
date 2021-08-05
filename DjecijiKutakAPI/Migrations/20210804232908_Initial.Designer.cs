@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DjecijiKutakAPI.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20210803220406_Initial")]
+    [Migration("20210804232908_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -82,8 +82,20 @@ namespace DjecijiKutakAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("BillingToken")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("FacilitatorAccessToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrderID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PaymentID")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SubscriptionID")
                         .IsRequired()
@@ -143,9 +155,6 @@ namespace DjecijiKutakAPI.Migrations
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
@@ -233,29 +242,29 @@ namespace DjecijiKutakAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0ef3dad1-bdd3-4685-8a20-4aedb4d7ad15",
-                            ConcurrencyStamp = "7fd42103-c6bc-4355-ae2a-1c2a651fa596",
+                            Id = "bf17df89-f9dd-459a-a6f0-2d724729ea35",
+                            ConcurrencyStamp = "bc43c0bb-3d65-4367-b785-3e7212fa6e8c",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "e0c8d850-0f40-4357-a93d-3bd77a162611",
-                            ConcurrencyStamp = "aef6fffc-81e0-49b9-a806-6282d5f6625f",
+                            Id = "3295833c-4dc8-4f7f-b617-d35c88507f5d",
+                            ConcurrencyStamp = "c8b7ff88-3e7a-4c65-b366-7f7a79b7e06f",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "fb78f6ad-69a3-460b-a5e1-fce00fd99b80",
-                            ConcurrencyStamp = "e262314b-59c4-4e41-9467-0b58e057e220",
+                            Id = "12552398-6808-4cad-8b21-dc9a7ada60ec",
+                            ConcurrencyStamp = "a2b86a7b-0cbd-431d-a22b-1fee588862f9",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "b0e6d1c3-79ac-47d9-af17-4c841fa62c40",
-                            ConcurrencyStamp = "27f7f769-f9a0-4b71-b63c-3b5ba2a47f84",
+                            Id = "a3c8588b-080a-4329-bc08-ceb7d271a773",
+                            ConcurrencyStamp = "d3a28723-9c14-4392-8299-652bac225c63",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });

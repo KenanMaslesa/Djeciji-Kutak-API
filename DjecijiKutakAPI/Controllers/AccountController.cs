@@ -75,7 +75,7 @@ namespace DjecijiKutakAPI.Controllers
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                Email = user.Email
+                Email = user.Email,
             };
         }
 
