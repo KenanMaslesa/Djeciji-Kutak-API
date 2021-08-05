@@ -2,6 +2,7 @@
 using DjecijiKutakAPI.DTOs;
 using DjecijiKutakAPI.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace DjecijiKutakAPI.Controllers
@@ -20,9 +21,13 @@ namespace DjecijiKutakAPI.Controllers
         [HttpPost("add")]
         public async Task<PaymentDto> AddPayment([FromBody] PaymentDto paymentDto)
         {
-            var user =  _usertRepository.GetUserByEmail(paymentDto.Email);
-            paymentDto.UserId = user.UserId;
             return await _paymentRepository.AddPayment(paymentDto);
+        }
+
+        [HttpGet("is-payment-successful/{userId}")]
+        public bool IsPaymentSuccessful(int userId)
+        {
+            return _paymentRepository.IsPaymentSuccessful(userId);
         }
     }
 }

@@ -10,6 +10,7 @@ namespace DjecijiKutakAPI.Repositories
     public interface IPaymentRepository
     {
         Task<PaymentDto> AddPayment(PaymentDto payment, CancellationToken cancellationToken = default);
+        bool IsPaymentSuccessful(int userId, CancellationToken cancellationToken = default);
 
     }
 }

@@ -49,7 +49,8 @@ namespace DjecijiKutakAPI.Controllers
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                Email = user.Email
+                Email = user.Email,
+                UserId = user.Id
             };
 
         }
@@ -76,6 +77,7 @@ namespace DjecijiKutakAPI.Controllers
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
+                UserId = user.Id
             };
         }
 
@@ -84,5 +86,6 @@ namespace DjecijiKutakAPI.Controllers
         {
             return await _userManager.Users.AnyAsync(x => x.Email == email.ToLower());
         }
+
     }
 }

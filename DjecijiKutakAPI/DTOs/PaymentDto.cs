@@ -5,7 +5,6 @@ namespace DjecijiKutakAPI.DTOs
     public class PaymentDto
     {
         public int UserId { get; set; }
-        public string Email { get; set; }
         public string BillingToken { get; set; }
         public string FacilitatorAccessToken { get; set; }
         public string OrderID { get; set; }
@@ -15,7 +14,12 @@ namespace DjecijiKutakAPI.DTOs
 
         public PaymentDto(Payment payment)
         {
-
+            UserId = payment.UserID;
+            BillingToken = payment.BillingToken;
+            FacilitatorAccessToken = payment.FacilitatorAccessToken;
+            OrderID = payment.OrderID;
+            PaymentID = payment.PaymentID;
+            SubscriptionID = payment.SubscriptionID;
         }
         public PaymentDto()
         {

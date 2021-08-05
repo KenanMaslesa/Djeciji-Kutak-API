@@ -34,5 +34,10 @@ namespace DjecijiKutakAPI.Repositories
             await _dbContext.SaveChangesAsync(cancellationToken);
             return new PaymentDto(newPayment);
         }
+
+        public bool IsPaymentSuccessful(int userId, CancellationToken cancellationToken = default)
+        {
+            return  _dbContext.Payments.Where(x => x.UserID == userId).FirstOrDefault() != null;
+        }
     }
 }
