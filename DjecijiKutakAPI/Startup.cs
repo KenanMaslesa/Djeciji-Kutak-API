@@ -42,6 +42,10 @@ namespace DjecijiKutakAPI
             services.AddIdentityCore<User>(opt =>
             {
                 opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequireDigit = false;
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequiredLength = 5;
             })
                .AddRoles<AppRole>()
                .AddRoleManager<RoleManager<AppRole>>()
